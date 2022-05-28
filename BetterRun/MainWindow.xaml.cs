@@ -56,10 +56,12 @@ namespace BetterRun
             if (lightThemeEnabled == 1)
             {
                 EnableMica(hwnd, false);
+                ThemeManager.Current.ApplicationTheme = ApplicationTheme.Light;
             }
             if (lightThemeEnabled == 0)
             {
                 EnableMica(hwnd, true);
+                ThemeManager.Current.ApplicationTheme = ApplicationTheme.Dark;
             }
         }
         private void Window_ContentRendered(object sender, System.EventArgs e)
@@ -81,12 +83,7 @@ namespace BetterRun
         }
         public MainWindow()
         {
-            if (ThemeManager.Current.ActualApplicationTheme == (ApplicationTheme)0)
-            {
-                ThemeManager.Current.ApplicationTheme = (ApplicationTheme)1;
-                ThemeManager.Current.AccentColor = SystemParameters.WindowGlassColor;
-
-            }
+            
             InitializeComponent();
         }
     }
