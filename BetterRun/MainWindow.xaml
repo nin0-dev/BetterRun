@@ -12,7 +12,7 @@
         Foreground="{DynamicResource SystemControlPageTextBaseHighBrush}"
         ui:WindowHelper.UseModernWindowStyle="False"
         
-        Title="Run" Height="269" Width="461" ResizeMode="NoResize">
+        Title="Run" Height="205" Width="508" ResizeMode="NoResize">
     <WindowChrome.WindowChrome>
         <WindowChrome
         CaptionHeight="100"
