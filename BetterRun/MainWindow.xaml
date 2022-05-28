@@ -26,7 +26,11 @@
             <ColumnDefinition Width="455*"/>
             <ColumnDefinition Width="53*"/>
         </Grid.ColumnDefinitions>
-        <TextBlock HorizontalAlignment="Left" Margin="13,9,0,0" TextWrapping="Wrap" Text="Run" VerticalAlignment="Top" Foreground="White"/>
+        <TextBlock HorizontalAlignment="Left" Margin="13,9,0,0" TextWrapping="Wrap" Text="Run" VerticalAlignment="Top"/>
+        <Image HorizontalAlignment="Left" Height="62" Margin="24,48,0,0" VerticalAlignment="Top" Width="43" Source="/Resources/RunIcon.png"/>
+        <Button Content="OK" Style="{StaticResource AccentButtonStyle}" Margin="179,155,0,0" VerticalAlignment="Top" Width="92" />
+        <Button Content="Cancel" Margin="285,155,0,0" VerticalAlignment="Top" Width="92" />
+        <Button Content="Browse..." Margin="393,155,0,0" VerticalAlignment="Top" Width="92" Grid.ColumnSpan="2" />
     </Grid>
 
 
