@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
+using ModernWpf;
 using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Interop;
@@ -22,6 +23,7 @@ namespace BetterRun
     /// </summary>
     public partial class MainWindow : Window
     {
+
         private const string KeyName = "HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Themes\\Personalize";
 
         [DllImport("dwmapi.dll")]
@@ -64,6 +66,14 @@ namespace BetterRun
         public MainWindow()
         {
             InitializeComponent();
+            if (ThemeManager.Current.ActualApplicationTheme == ApplicationTheme.Dark)
+            {
+                ThemeManager.Current.ApplicationTheme = ApplicationTheme.Light;
+            }
+            else
+            {
+                ThemeManager.Current.ApplicationTheme = ApplicationTheme.Dark;
+            }
         }
         private void Window_ContentRendered(object sender, System.EventArgs e)
         {
