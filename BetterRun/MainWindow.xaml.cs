@@ -66,6 +66,7 @@ namespace BetterRun
         public MainWindow()
         {
             InitializeComponent();
+            ThemeManager.Current.AccentColor = SystemParameters.WindowGlassColor;
             if (ThemeManager.Current.ActualApplicationTheme == ApplicationTheme.Dark)
             {
                 ThemeManager.Current.ApplicationTheme = ApplicationTheme.Light;
