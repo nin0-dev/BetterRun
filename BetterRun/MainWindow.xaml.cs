@@ -80,10 +80,10 @@ namespace BetterRun
 
             // Subscribe to PresentationSource's ContentRendered event
             presentationSource.ContentRendered += Window_ContentRendered;
+            PathTextBox.Focus();
         }
         public MainWindow()
         {
-            
             InitializeComponent();
         }
     }
