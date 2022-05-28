@@ -22,6 +22,8 @@ namespace BetterRun
     /// </summary>
     public partial class MainWindow : Window
     {
+        private const string KeyName = "HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Themes\\Personalize";
+
         [DllImport("dwmapi.dll")]
         public static extern int DwmSetWindowAttribute(IntPtr hwnd, DwmWindowAttribute dwAttribute, ref int pvAttribute, int cbAttribute);
 
@@ -31,7 +33,6 @@ namespace BetterRun
             DWMWA_USE_IMMERSIVE_DARK_MODE = 20,
             DWMWA_MICA_EFFECT = 1029
         }
-
         // Enable Mica on the given HWND.
         public static void EnableMica(HwndSource source, bool darkThemeEnabled)
         {
@@ -49,9 +50,15 @@ namespace BetterRun
 
         public static void UpdateStyleAttributes(HwndSource hwnd)
         {
-            // You can avoid using ModernWpf here and just rely on Win32 APIs or registry parsing if you want to.
-
-            EnableMica(hwnd, true);
+            int lightThemeEnabled = (int)Microsoft.Win32.Registry.GetValue(KeyName, "AppsUseLightTheme", 1);
+            if (lightThemeEnabled == 1)
+            {
+                EnableMica(hwnd, false);
+            }
+            if (lightThemeEnabled == 0)
+            {
+                EnableMica(hwnd, true);
+            }
         }
 
         public MainWindow()
@@ -64,7 +71,7 @@ namespace BetterRun
             UpdateStyleAttributes((HwndSource)sender);
 
             // Hook to Windows theme change to reapply the brushes when needed
-            
+            ModernWpf.ThemeManager.Current.ActualApplicationThemeChanged += (s, ev) => UpdateStyleAttributes((HwndSource)sender);
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)

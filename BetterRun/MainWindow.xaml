@@ -6,17 +6,22 @@
         xmlns:local="clr-namespace:BetterRun"
         xmlns:ui="http://schemas.modernwpf.com/2019"
         Background="Transparent"
-        mc:Ignorable="d"
+        WindowStyle="SingleBorderWindow"
         Loaded="Window_Loaded"
-        Foreground="White"
-        Title="MainWindow" Height="340" Width="496">
+        mc:Ignorable="d"
+        Foreground="{DynamicResource SystemControlPageTextBaseHighBrush}"
+        ui:WindowHelper.UseModernWindowStyle="False"
+        
+        Title="Run" Height="269" Width="461" ResizeMode="NoResize">
     <WindowChrome.WindowChrome>
         <WindowChrome
-        CaptionHeight="20"
+        CaptionHeight="100"
         ResizeBorderThickness="8"
         CornerRadius="0"
         GlassFrameThickness="-1"
         UseAeroCaptionButtons="True" />
     </WindowChrome.WindowChrome>
-    
+    <TextBlock HorizontalAlignment="Left" Margin="19,10,0,0" TextWrapping="Wrap" Text="Run" VerticalAlignment="Top" Foreground="White"/>
+
+
 </Window>
