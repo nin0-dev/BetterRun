@@ -31,6 +31,7 @@
         <Button Content="OK" Style="{StaticResource AccentButtonStyle}" Margin="179,155,0,0" VerticalAlignment="Top" Width="92" />
         <Button Content="Cancel" Margin="285,155,0,0" VerticalAlignment="Top" Width="92" />
         <Button Content="Browse..." Margin="393,155,0,0" VerticalAlignment="Top" Width="92" Grid.ColumnSpan="2" />
+        <TextBlock HorizontalAlignment="Left" Margin="77,52,0,0" TextWrapping="Wrap" Text="Type the name of a program or website, and BetterRun will open it for you." VerticalAlignment="Top" FontSize="14"/>
     </Grid>
 
 
