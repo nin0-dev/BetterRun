@@ -62,20 +62,6 @@ namespace BetterRun
                 EnableMica(hwnd, true);
             }
         }
-
-        public MainWindow()
-        {
-            InitializeComponent();
-            ThemeManager.Current.AccentColor = SystemParameters.WindowGlassColor;
-            if (ThemeManager.Current.ActualApplicationTheme == ApplicationTheme.Dark)
-            {
-                ThemeManager.Current.ApplicationTheme = ApplicationTheme.Light;
-            }
-            else
-            {
-                ThemeManager.Current.ApplicationTheme = ApplicationTheme.Dark;
-            }
-        }
         private void Window_ContentRendered(object sender, System.EventArgs e)
         {
             // Apply Mica brush and ImmersiveDarkMode if needed
@@ -92,6 +78,16 @@ namespace BetterRun
 
             // Subscribe to PresentationSource's ContentRendered event
             presentationSource.ContentRendered += Window_ContentRendered;
+        }
+        public MainWindow()
+        {
+            if (ThemeManager.Current.ActualApplicationTheme == (ApplicationTheme)0)
+            {
+                ThemeManager.Current.ApplicationTheme = (ApplicationTheme)1;
+                ThemeManager.Current.AccentColor = SystemParameters.WindowGlassColor;
+
+            }
+            InitializeComponent();
         }
     }
 }
