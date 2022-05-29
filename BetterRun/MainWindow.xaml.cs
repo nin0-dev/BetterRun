@@ -84,6 +84,7 @@ namespace BetterRun
         public MainWindow()
         {
             InitializeComponent();
+            Visibility = Visibility.Hidden;
             Events();
             var desktopWorkingArea = System.Windows.SystemParameters.WorkArea;
             Left = desktopWorkingArea.Left + 26;
@@ -94,12 +95,19 @@ namespace BetterRun
             MoreButton.Click += MoreButton_Click;
             CancelButton.Click += CancelButton_Click;
             BrowseButton.Click += BrowseButton_Click;
+            AboutContextItem.Click += AboutContextItem_Click;
             OKButton.Click += OKButton_Click;
             PathTextBox.TextChanged += PathTextBox_TextChanged;
             Closing += MainWindow_Closing;
             Activated += MainWindow_Activated;
             KeyDown += MainWindow_KeyDown;
             PathTextBox.KeyDown += PathTextBox_KeyDown;
+        }
+
+        private void AboutContextItem_Click(object sender, RoutedEventArgs e)
+        {
+            AboutDialog aboutDialog = new AboutDialog();
+            aboutDialog.ShowDialog();
         }
 
         private void PathTextBox_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)
