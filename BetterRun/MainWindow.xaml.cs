@@ -118,7 +118,10 @@ namespace BetterRun
             }
             if (e.Key == Key.Enter)
             {
-                OKButton_Click(null, null);
+                if(PathTextBox.Text != "")
+                {
+                    OKButton_Click(null, null);
+                }
             }
         }
 
