@@ -28,10 +28,10 @@
             <ColumnDefinition Width="382*"/>
             <ColumnDefinition Width="46*"/>
         </Grid.ColumnDefinitions>
-        <TextBlock HorizontalAlignment="Left" Margin="13,9,0,0" TextWrapping="Wrap" Text="About" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
+        <TextBlock x:Name="WindowTitle" HorizontalAlignment="Left" Margin="13,9,0,0" TextWrapping="Wrap" Text="About" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
         <Image HorizontalAlignment="Left" Height="66" Margin="20,37,0,0" VerticalAlignment="Top" Width="70" Source="/Resources/RunIcon.png" Grid.Column="1"/>
-        <TextBlock HorizontalAlignment="Left" Margin="90,46,0,0" TextWrapping="Wrap" Text="BetterRun" VerticalAlignment="Top" FontSize="22" Grid.Column="1"/>
-        <TextBlock HorizontalAlignment="Left" Margin="39,96,0,0" TextWrapping="Wrap" Text="Made with ❤️ by nin0dev" VerticalAlignment="Top" Grid.Column="1"/>
+        <TextBlock x:Name="Title" HorizontalAlignment="Left" Margin="90,46,0,0" TextWrapping="Wrap" Text="BetterRun" VerticalAlignment="Top" FontSize="22" Grid.Column="1"/>
+        <TextBlock x:Name="MadeWithLove" HorizontalAlignment="Left" Margin="39,96,0,0" TextWrapping="Wrap" Text="Made with ❤️ by nin0dev" VerticalAlignment="Top" Grid.Column="1"/>
         <Button Content="Releases" Margin="20,128,0,0" Width="177" Style="{StaticResource AccentButtonStyle}" Name="ReleasesButton" VerticalAlignment="Top" Grid.Column="1"/>
         <Button Content="Source code" Margin="20,165,0,0" Width="177" x:Name="SourceButton" VerticalAlignment="Top" Grid.Column="1"/>
         <Grid Grid.Column="2"/>

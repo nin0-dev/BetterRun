@@ -82,6 +82,7 @@ namespace BetterRun
             InitializeComponent();
             SourceButton.Click += SourceButton_Click;
             ReleasesButton.Click += ReleasesButton_Click;
+            Translate();
         }
 
         private void ReleasesButton_Click(object sender, RoutedEventArgs e)
@@ -107,6 +108,17 @@ namespace BetterRun
                     WorkingDirectory = Environment.GetEnvironmentVariable("USERPROFILE")
                 }
             }.Start();
+        }
+        private void Translate()
+        {
+            if (System.Globalization.CultureInfo.CurrentUICulture.Name.Contains("fr"))
+            {
+                // French
+                WindowTitle.Text = "À propos";
+                MadeWithLove.Text = "Fait avec ❤️ par nin0dev";
+                ReleasesButton.Content = "Versions";
+                SourceButton.Content = "Code source";
+            }
         }
     }
 }
