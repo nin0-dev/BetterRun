@@ -129,7 +129,14 @@ namespace BetterRun
             string arguments = "";
             try
             {
-                program = input.Substring(0, input.IndexOf(" "));
+                if (input.Contains(" "))
+                {
+                    program = input.Substring(0, input.IndexOf(" "));
+                }
+                else
+                {
+                    program = input;
+                }
             }
             catch
             {
@@ -137,7 +144,10 @@ namespace BetterRun
             }
             try
             {
-                arguments = input.Substring(input.IndexOf(" "));
+                if(input.Contains(" "))
+                {
+                    arguments = input.Substring(input.IndexOf(" "));
+                }
             }
             catch
             {
