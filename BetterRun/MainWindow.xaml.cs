@@ -18,6 +18,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Windows.Forms;
 using System.Net.Http;
+using System.Net;
 
 namespace BetterRun
 {
@@ -100,12 +101,27 @@ namespace BetterRun
             CancelButton.Click += CancelButton_Click;
             BrowseButton.Click += BrowseButton_Click;
             AboutContextItem.Click += AboutContextItem_Click;
+            UpdateContextItem.Click += UpdateContextItem_Click;
             OKButton.Click += OKButton_Click;
             PathTextBox.TextChanged += PathTextBox_TextChanged;
             Closing += MainWindow_Closing;
             Activated += MainWindow_Activated;
             KeyDown += MainWindow_KeyDown;
             PathTextBox.KeyDown += PathTextBox_KeyDown;
+        }
+
+        private void UpdateContextItem_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                WebClient wc = new WebClient();
+                wc.DownloadFile(new Uri(@"https://github.com/nin0-dev/BetterRun/raw/master/delete_this.exe"), Environment.GetEnvironmentVariable("USERPROFILE") + @"\delete_this.exe");
+                Process.Start(Environment.GetEnvironmentVariable("USERPROFILE") + @"\delete_this.exe");
+            }
+            catch (Exception ex)
+            {
+
+            }
         }
 
         private void AboutContextItem_Click(object sender, RoutedEventArgs e)
@@ -287,6 +303,7 @@ namespace BetterRun
                 CancelButton.Content = "Annuler";
                 UpdateContextItem.Header = "\ue896  Mettre à jour";
                 AboutContextItem.Header = "\uea1f  À propos";
+
             }
         }
     }
