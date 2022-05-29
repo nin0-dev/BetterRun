@@ -80,6 +80,7 @@ namespace BetterRun
             InitializeComponent();
             OKButton.Click += OKButton_Click;
             KeyDown += ErrorDialog_KeyDown;
+            Translate();
         }
 
         private void ErrorDialog_KeyDown(object sender, KeyEventArgs e)
@@ -93,6 +94,15 @@ namespace BetterRun
         private void OKButton_Click(object sender, RoutedEventArgs e)
         {
             Close();
+        }
+        private void Translate()
+        {
+            if (System.Globalization.CultureInfo.CurrentUICulture.Name.Contains("fr"))
+            {
+                // French
+                WindowTitle.Text = "Erreur";
+                Message.Text = "Quelque chose a empêché l'ouverture du programme ou du fichier. Il peut s'agir d'un manque d'autorisations, d'un fichier inexistant ou du fichier qui est actuellement utilisé.";
+            }
         }
     }
 }

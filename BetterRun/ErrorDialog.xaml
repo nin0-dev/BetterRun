@@ -27,10 +27,10 @@
             <ColumnDefinition Width="455*"/>
             <ColumnDefinition Width="53*"/>
         </Grid.ColumnDefinitions>
-        <TextBlock HorizontalAlignment="Left" Margin="13,9,0,0" TextWrapping="Wrap" Text="Error" VerticalAlignment="Top"/>
+        <TextBlock x:Name="WindowTitle" HorizontalAlignment="Left" Margin="13,9,0,0" TextWrapping="Wrap" Text="Error" VerticalAlignment="Top"/>
         <Image HorizontalAlignment="Left" Height="59" Margin="23,50,0,0" VerticalAlignment="Top" Width="41" Source="/Resources/ErrorIcon.png"/>
         <Button x:Name="OKButton" Style="{StaticResource AccentButtonStyle}" Content="OK" Margin="411,110,0,0" VerticalAlignment="Top" Width="74" Grid.ColumnSpan="2" FontWeight="Normal" />
-        <TextBlock HorizontalAlignment="Left" Margin="77,43,0,0" TextWrapping="Wrap" Text="Something prevented the program or file to open. It may be a lack of permissions, a non-existing file, or the file being currently used." VerticalAlignment="Top" FontSize="14"/>
+        <TextBlock x:Name="Message" HorizontalAlignment="Left" Margin="77,43,0,0" TextWrapping="Wrap" Text="Something prevented the program or file to open. It may be a lack of permissions, a non-existing file, or the file being currently used." VerticalAlignment="Top" FontSize="14"/>
     </Grid>
 
 
