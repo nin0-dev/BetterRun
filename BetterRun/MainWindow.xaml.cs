@@ -124,15 +124,35 @@ namespace BetterRun
 
         private void OKButton_Click(object sender, RoutedEventArgs e)
         {
+            string input = PathTextBox.Text;
+            string program = "";
+            string arguments = "";
+            try
+            {
+                program = input.Substring(0, input.IndexOf(" "));
+            }
+            catch
+            {
+
+            }
+            try
+            {
+                arguments = input.Substring(input.IndexOf(" "));
+            }
+            catch
+            {
+                 
+            }
             try
             {
                 if ((bool)!AdminCheckbox.IsChecked)
                 {
                     new Process
                     {
-                        StartInfo = new ProcessStartInfo(PathTextBox.Text)
+                        StartInfo = new ProcessStartInfo(program)
                         {
                             UseShellExecute = true,
+                            Arguments = arguments,
                             WorkingDirectory = Environment.GetEnvironmentVariable("USERPROFILE")
                         }
                     }.Start();
@@ -143,9 +163,10 @@ namespace BetterRun
                 {
                     new Process
                     {
-                        StartInfo = new ProcessStartInfo(PathTextBox.Text)
+                        StartInfo = new ProcessStartInfo(program)
                         {
                             UseShellExecute = true,
+                            Arguments = arguments,
                             WorkingDirectory = Environment.GetEnvironmentVariable("USERPROFILE"),
                             Verb = "runas"
                         }
