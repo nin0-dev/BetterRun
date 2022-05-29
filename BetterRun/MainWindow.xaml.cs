@@ -17,6 +17,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Windows.Forms;
+using System.Net.Http;
 
 namespace BetterRun
 {
@@ -81,6 +82,7 @@ namespace BetterRun
             presentationSource.ContentRendered += Window_ContentRendered;
             PathTextBox.Focus();
             CancelButton_Click(null, null);
+            UpdateCheck();
         }
         public MainWindow()
         {
@@ -89,6 +91,7 @@ namespace BetterRun
             var desktopWorkingArea = System.Windows.SystemParameters.WorkArea;
             Left = desktopWorkingArea.Left + 26;
             Top = desktopWorkingArea.Bottom - 260;
+            UpdateCheck();
         }
         public void Events()
         {
@@ -234,7 +237,8 @@ namespace BetterRun
         {
             Visibility = Visibility.Hidden;
         }
-
+        
+    
         private void PathTextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
             if(PathTextBox.Text == "")
@@ -250,6 +254,25 @@ namespace BetterRun
         private void MoreButton_Click(object sender, RoutedEventArgs e)
         {
             MoreButton.ContextMenu.IsOpen = true;
+        }
+        private void UpdateCheck()
+        {
+            MoreContextMenu.Items.Remove(UpdateContextItem);
+            MoreContextMenu.Items.Insert(0, UpdateContextItem);
+            try
+            {
+                HttpClient client = new HttpClient();
+                var stringTask = client.GetStringAsync(@"https://raw.githubusercontent.com/nin0-dev/BetterRun/master/ota_version");
+                var msg = stringTask.Result;
+                if (msg == "1.0\n")
+                {
+                    MoreContextMenu.Items.Remove(UpdateContextItem);
+                }
+            }
+            catch (Exception ex)
+            {
+                MoreContextMenu.Items.Remove(UpdateContextItem);
+            }
         }
     }
 }

@@ -39,6 +39,7 @@
         <Button x:Name="MoreButton" Content="&#xe712;" FontFamily="Segoe Fluent Icons, Segoe MDL2 Assets" Margin="0,103,0,0" VerticalAlignment="Top" Width="31" FontWeight="Normal" Grid.Column="1" HorizontalAlignment="Center" FontSize="14" Height="33" Background="#00000000">
             <Button.ContextMenu>
                 <ContextMenu Name="MoreContextMenu">
+                    <MenuItem Header="&#xe896;  Update" FontFamily="Segoe UI, Segoe Fluent Icons, Segoe MDL2 Assets" Name="UpdateContextItem"/>
                     <MenuItem Header="&#xea1f;  About" FontFamily="Segoe UI, Segoe Fluent Icons, Segoe MDL2 Assets" Name="AboutContextItem"/>
                 </ContextMenu>
             </Button.ContextMenu>
