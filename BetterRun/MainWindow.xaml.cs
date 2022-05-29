@@ -75,7 +75,8 @@ namespace BetterRun
         {
             // Get PresentationSource
             PresentationSource presentationSource = PresentationSource.FromVisual((Visual)sender);
-
+            
+            
             // Subscribe to PresentationSource's ContentRendered event
             presentationSource.ContentRendered += Window_ContentRendered;
             PathTextBox.Focus();
@@ -84,6 +85,9 @@ namespace BetterRun
         {
             InitializeComponent();
             Events();
+            var desktopWorkingArea = System.Windows.SystemParameters.WorkArea;
+            Left = desktopWorkingArea.Left + 26;
+            Top = desktopWorkingArea.Bottom - 260;
         }
         public void Events()
         {
