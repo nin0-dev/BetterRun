@@ -23,19 +23,16 @@ namespace BetterRun
     /// </summary>
     public partial class MainWindow : Window
     {
-
         private const string KeyName = "HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Themes\\Personalize";
 
         [DllImport("dwmapi.dll")]
         public static extern int DwmSetWindowAttribute(IntPtr hwnd, DwmWindowAttribute dwAttribute, ref int pvAttribute, int cbAttribute);
-
         [Flags]
         public enum DwmWindowAttribute : uint
         {
             DWMWA_USE_IMMERSIVE_DARK_MODE = 20,
             DWMWA_MICA_EFFECT = 1029
         }
-        // Enable Mica on the given HWND.
         public static void EnableMica(HwndSource source, bool darkThemeEnabled)
         {
             int trueValue = 0x01;
@@ -49,7 +46,6 @@ namespace BetterRun
 
             DwmSetWindowAttribute(source.Handle, DwmWindowAttribute.DWMWA_MICA_EFFECT, ref trueValue, Marshal.SizeOf(typeof(int)));
         }
-
         public static void UpdateStyleAttributes(HwndSource hwnd)
         {
             int lightThemeEnabled = (int)Microsoft.Win32.Registry.GetValue(KeyName, "AppsUseLightTheme", 1);
@@ -72,7 +68,6 @@ namespace BetterRun
             // Hook to Windows theme change to reapply the brushes when needed
             ModernWpf.ThemeManager.Current.ActualApplicationThemeChanged += (s, ev) => UpdateStyleAttributes((HwndSource)sender);
         }
-
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             // Get PresentationSource
@@ -85,6 +80,16 @@ namespace BetterRun
         public MainWindow()
         {
             InitializeComponent();
+            Buttons();
+        }
+        public void Buttons()
+        {
+            MoreButton.Click += MoreButton_Click;
+        }
+
+        private void MoreButton_Click(object sender, RoutedEventArgs e)
+        {
+            MoreButton.ContextMenu.IsOpen = true;
         }
     }
 }
