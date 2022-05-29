@@ -80,11 +80,24 @@ namespace BetterRun
         public MainWindow()
         {
             InitializeComponent();
-            Buttons();
+            Events();
         }
-        public void Buttons()
+        public void Events()
         {
             MoreButton.Click += MoreButton_Click;
+            PathTextBox.TextChanged += PathTextBox_TextChanged;
+        }
+
+        private void PathTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if(PathTextBox.Text == "")
+            {
+                OKButton.IsEnabled = false;
+            }
+            if (PathTextBox.Text != "")
+            {
+                OKButton.IsEnabled = true;
+            }
         }
 
         private void MoreButton_Click(object sender, RoutedEventArgs e)
