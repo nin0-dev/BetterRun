@@ -11,10 +11,12 @@ using ModernWpf;
 using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Interop;
+using System.Diagnostics;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Windows.Forms;
 
 namespace BetterRun
 {
@@ -86,9 +88,61 @@ namespace BetterRun
         {
             MoreButton.Click += MoreButton_Click;
             CancelButton.Click += CancelButton_Click;
+            BrowseButton.Click += BrowseButton_Click;
+            OKButton.Click += OKButton_Click;
             PathTextBox.TextChanged += PathTextBox_TextChanged;
             Closing += MainWindow_Closing;
             Activated += MainWindow_Activated;
+        }
+
+        private void OKButton_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                if ((bool)!AdminCheckbox.IsChecked)
+                {
+                    new Process
+                    {
+                        StartInfo = new ProcessStartInfo(PathTextBox.Text)
+                        {
+                            UseShellExecute = true,
+                            WorkingDirectory = Environment.GetEnvironmentVariable("USERPROFILE")
+                        }
+                    }.Start();
+                    Visibility = Visibility.Hidden;
+                    PathTextBox.Text = "";
+                }
+                if ((bool)AdminCheckbox.IsChecked)
+                {
+                    new Process
+                    {
+                        StartInfo = new ProcessStartInfo(PathTextBox.Text)
+                        {
+                            UseShellExecute = true,
+                            WorkingDirectory = Environment.GetEnvironmentVariable("USERPROFILE"),
+                            Verb = "runas"
+                        }
+                    }.Start();
+                    Visibility = Visibility.Hidden;
+                    PathTextBox.Text = "";
+                }
+            }
+            catch (Exception ex)
+            {
+                
+            }
+        }
+
+        private void BrowseButton_Click(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Title = "Choose file";
+            openFileDialog.ShowDialog();
+            if(openFileDialog.FileName != "")
+            {
+                PathTextBox.Focus();
+                PathTextBox.Text = openFileDialog.FileName;
+            }
         }
 
         private void MainWindow_Activated(object? sender, EventArgs e)
