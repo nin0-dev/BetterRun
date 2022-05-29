@@ -98,6 +98,28 @@ namespace BetterRun
             PathTextBox.TextChanged += PathTextBox_TextChanged;
             Closing += MainWindow_Closing;
             Activated += MainWindow_Activated;
+            KeyDown += MainWindow_KeyDown;
+            PathTextBox.KeyDown += PathTextBox_KeyDown;
+        }
+
+        private void PathTextBox_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)
+        {
+            if (e.Key == Key.Escape)
+            {
+                Close();
+            }
+            if (e.Key == Key.Enter)
+            {
+                OKButton_Click(null, null);
+            }
+        }
+
+        private void MainWindow_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)
+        {
+            if(e.Key == Key.Escape)
+            {
+                Close();
+            }
         }
 
         private void OKButton_Click(object sender, RoutedEventArgs e)
@@ -132,11 +154,12 @@ namespace BetterRun
                     PathTextBox.Text = "";
                 }
             }
-            catch (Exception ex)
+            catch (System.ComponentModel.Win32Exception ex)
             {
                 ErrorDialog ed = new ErrorDialog();
                 ed.ShowDialog();
             }
+        
         }
 
         private void BrowseButton_Click(object sender, RoutedEventArgs e)
@@ -154,6 +177,8 @@ namespace BetterRun
         private void MainWindow_Activated(object? sender, EventArgs e)
         {
             Visibility = Visibility.Visible;
+            PathTextBox.Text = "";
+            AdminCheckbox.IsChecked = false;
             PathTextBox.Focus();
         }
 
