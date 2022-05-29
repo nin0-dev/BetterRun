@@ -30,7 +30,7 @@
         <TextBlock HorizontalAlignment="Left" Margin="13,9,0,0" TextWrapping="Wrap" Text="Run" VerticalAlignment="Top"/>
         <Image HorizontalAlignment="Left" Height="62" Margin="24,48,0,0" VerticalAlignment="Top" Width="43" Source="/Resources/RunIcon.png"/>
         <Button x:Name="OKButton" Content="OK" Style="{StaticResource AccentButtonStyle}" Margin="179,185,0,0" VerticalAlignment="Top" Width="92" IsEnabled="False" />
-        <Button Content="Cancel" Margin="285,185,0,0" VerticalAlignment="Top" Width="92" />
+        <Button Content="Cancel" Margin="285,185,0,0" VerticalAlignment="Top" Width="92" Name="CancelButton"/>
         <Button Content="Browse..." Margin="393,185,0,0" VerticalAlignment="Top" Width="92" Grid.ColumnSpan="2" FontWeight="Normal" />
         <TextBlock HorizontalAlignment="Left" Margin="77,52,0,0" TextWrapping="Wrap" Text="Type the name of a program or website, and BetterRun will open it for you." VerticalAlignment="Top" FontSize="14"/>
         <TextBlock HorizontalAlignment="Left" Margin="23,108,0,0" TextWrapping="Wrap" Text="Open: " VerticalAlignment="Top" FontSize="14"/>

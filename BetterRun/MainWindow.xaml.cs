@@ -85,7 +85,27 @@ namespace BetterRun
         public void Events()
         {
             MoreButton.Click += MoreButton_Click;
+            CancelButton.Click += CancelButton_Click;
             PathTextBox.TextChanged += PathTextBox_TextChanged;
+            Closing += MainWindow_Closing;
+            Activated += MainWindow_Activated;
+        }
+
+        private void MainWindow_Activated(object? sender, EventArgs e)
+        {
+            Visibility = Visibility.Visible;
+            PathTextBox.Focus();
+        }
+
+        private void MainWindow_Closing(object? sender, System.ComponentModel.CancelEventArgs e)
+        {
+            Visibility = Visibility.Hidden;
+            e.Cancel = true;
+        }
+
+        private void CancelButton_Click(object sender, RoutedEventArgs e)
+        {
+            Visibility = Visibility.Hidden;
         }
 
         private void PathTextBox_TextChanged(object sender, TextChangedEventArgs e)
