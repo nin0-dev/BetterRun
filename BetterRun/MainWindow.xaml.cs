@@ -92,6 +92,7 @@ namespace BetterRun
             Left = desktopWorkingArea.Left + 26;
             Top = desktopWorkingArea.Bottom - 260;
             UpdateCheck();
+            Translate();
         }
         public void Events()
         {
@@ -210,7 +211,6 @@ namespace BetterRun
         private void BrowseButton_Click(object sender, RoutedEventArgs e)
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();
-            openFileDialog.Title = "Choose file";
             openFileDialog.ShowDialog();
             if(openFileDialog.FileName != "")
             {
@@ -272,6 +272,21 @@ namespace BetterRun
             catch (Exception ex)
             {
                 MoreContextMenu.Items.Remove(UpdateContextItem);
+            }
+        }
+        private void Translate()
+        {
+            if(System.Globalization.CultureInfo.CurrentUICulture.Name.Contains("fr"))
+            {
+                // French
+                Title.Text = "Exécuter";
+                GreetingText.Text = "Entrez le nom d'un programme, site Web ou fichier, et BetterRun l'ouvrira pour vous.";
+                OpenText.Text = "Ouvrir:";
+                AdminCheckbox.Content = "Lancer en tant qu'admin";
+                BrowseButton.Content = "Parcourir...";
+                CancelButton.Content = "Annuler";
+                UpdateContextItem.Header = "\ue896  Mettre à jour";
+                AboutContextItem.Header = "\uea1f  À propos";
             }
         }
     }
