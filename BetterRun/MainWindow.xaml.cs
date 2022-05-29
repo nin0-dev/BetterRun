@@ -60,7 +60,8 @@ namespace BetterRun
             {
                 EnableMica(hwnd, true);
                 ThemeManager.Current.ApplicationTheme = ApplicationTheme.Dark;
-            }
+            }           
+            ThemeManager.Current.AccentColor = SystemParameters.WindowGlassColor;
         }
         private void Window_ContentRendered(object sender, System.EventArgs e)
         {
@@ -129,7 +130,8 @@ namespace BetterRun
             }
             catch (Exception ex)
             {
-                
+                ErrorDialog ed = new ErrorDialog();
+                ed.ShowDialog();
             }
         }
 

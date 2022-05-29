@@ -9,10 +9,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Resources\ErrorIcon.png" />
     <None Remove="Resources\RunIcon.png" />
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="Resources\ErrorIcon.png" />
     <Resource Include="Resources\RunIcon.png" />
   </ItemGroup>
 
