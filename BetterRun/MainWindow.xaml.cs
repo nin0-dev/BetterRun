@@ -84,7 +84,6 @@ namespace BetterRun
         public MainWindow()
         {
             InitializeComponent();
-            Visibility = Visibility.Hidden;
             Events();
             var desktopWorkingArea = System.Windows.SystemParameters.WorkArea;
             Left = desktopWorkingArea.Left + 26;

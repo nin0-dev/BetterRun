@@ -13,7 +13,7 @@
         Foreground="{DynamicResource SystemControlPageTextBaseHighBrush}"
         ui:WindowHelper.UseModernWindowStyle="False"
         
-        Title="Run" Height="242" Width="508" ResizeMode="NoResize"  Topmost="True">
+        Title="AHKDetect54984" Height="242" Width="508" ResizeMode="NoResize"  Topmost="True">
     <WindowChrome.WindowChrome>
         <WindowChrome
         CaptionHeight="8"
