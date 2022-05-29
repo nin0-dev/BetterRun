@@ -1,6 +1,7 @@
 ﻿using ModernWpf;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
@@ -79,6 +80,33 @@ namespace BetterRun
         public AboutDialog()
         {
             InitializeComponent();
+            SourceButton.Click += SourceButton_Click;
+            ReleasesButton.Click += ReleasesButton_Click;
+        }
+
+        private void ReleasesButton_Click(object sender, RoutedEventArgs e)
+        {
+
+            new Process
+            {
+                StartInfo = new ProcessStartInfo(@"https://github.com/nin0-dev/BetterRun/releases")
+                {
+                    UseShellExecute = true,
+                    WorkingDirectory = Environment.GetEnvironmentVariable("USERPROFILE")
+                }
+            }.Start();
+        }
+
+        private void SourceButton_Click(object sender, RoutedEventArgs e)
+        {
+            new Process
+            {
+                StartInfo = new ProcessStartInfo(@"https://github.com/nin0-dev/BetterRun")
+                {
+                    UseShellExecute = true,
+                    WorkingDirectory = Environment.GetEnvironmentVariable("USERPROFILE")
+                }
+            }.Start();
         }
     }
 }
